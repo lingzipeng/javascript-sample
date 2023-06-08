@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li><a href="#" class="link">超链接</a></li>
+			<li><a href="#" class="link">超链接2</a></li>
+			<li><a href="#" class="link">超链接3</a></li>
+		</ul>
+		<button type="button" id="btn">添加超链接</button>
+	</body>
+</html>
+<script type="text/javascript">
+	var ul = document.getElementById("ul");
+	var btn = document.getElementById("btn");
+	// 为每个超链接绑定一个单击响应函数
+	var allA = document.getElementsByTagName("a");
+	// for(var i = 0;i < allA.length;i++){
+	// 	allA[i].onclick = function(){
+	// 		alert("test");
+	// 		return false;
+	// 	}
+	// }
+	// 新增超链接
+	btn.onclick  = function(){
+		var li =document.createElement("li");
+		li.innerHTML ="<a href='#' class='link'>新建超链接</a>";
+		ul.appendChild(li);
+	}
+	// 使用该方式新添加的超链接需要重新绑定单击响应函数
+	// 因此可以绑定给元素的共同祖先元素，称为事件的委派
+	ul.onclick = function(e){
+		// 如果触发事件的是期望的对象则触发事件
+		// target表示的是触发事件的对象
+		if(e.target.className == "link")
+			alert("yes")
+	}
+</script>

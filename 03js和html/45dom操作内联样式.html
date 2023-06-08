@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box1"></div>
+		<button type="button" id="btn01">按钮</button>
+		<button type="button" id="btn02">读取样式</button>
+	</body>
+</html>
+<script type="text/javascript">
+	// 点击按钮以后修改box1大小
+	var box1 = document.getElementById("box1");
+	var btn01 = document.getElementById("btn01");
+	btn01.onclick = function(){
+		// 元素.style.样式名 = 样式值
+		// 如果css样式名中有 - ，如background-color，需要将这种样式名修改为驼峰命名法
+		box1.style.width = "300px"
+		box1.style.height = "300px"
+		box1.style.backgroundColor = "#f2f2f2"
+		// 通过style属性设置的都是内联样式，内联样式有较高的优先级,如果在样式中写了!important则无法覆盖样式
+	}
+	var btn02 = document.getElementById("btn02");
+	btn02.onclick = function(){
+		// 同样只能读取内联样式
+		alert(box1.style.width+" "+box1.style.height);
+	}
+</script>
+<style type="text/css">
+	#box1{
+		width: 12.5rem;
+		height: 12.5rem !important;
+		background-color: red;
+	}
+</style>

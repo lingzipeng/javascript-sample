@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body style="height: 2000px;">
+		<div id="box1"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	// 滚轮向下滚动，box1边长，向上滚动box1变短
+	var box1 = document.getElementById("box1")
+	// onmousewheel鼠标滚轮滚动事件
+	box1.onwheel = function(e){
+		// 获取滚轮滚动方向
+		// 这个值不看大小只看正负
+		console.log(e.wheelDelta)
+		if(e.wheelDelta > 0)
+			// alert("向上")
+			box1.style.height = (box1.clientHeight - 10)+"px"
+		else
+			// alert("向下")
+			box1.style.height = (box1.clientHeight + 10)+"px"
+		// 禁用浏览器滚动条
+		return false;
+	} 
+</script>
+<style type="text/css">
+	#box1{
+		width: 12.5rem;
+		height: 12.5rem;
+		background-color: #FFFF00;
+	}
+</style>

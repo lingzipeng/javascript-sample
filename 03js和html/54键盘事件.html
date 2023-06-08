@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="input" value="" />
+	</body>
+</html>
+<script type="text/javascript">
+	// 键盘事件
+	// onkeydown按键被按下，如果一直按着不松手事件会一直触发
+	// onkeyup按键被松开
+	// 详见https://www.runoob.com/jsref/dom-obj-event.html
+	// 键盘事件一般都绑定给一些可获取焦点的对象或者是document
+	document.onkeydown = function(e){
+		console.log("按下键盘")
+		console.log(e.keyCode)
+		// 判断alt和a是否同时按下
+		if(e.altKey && e.keyCode == 65)
+			console.log("同时按下")
+	}
+	var input = document.getElementById("input")
+	// 在文本框中输入内容是onkeydown默认行为
+	input.onkeydown = function(e){
+		// 使文本框中不能输入数字
+		if(e.keyCode >= 48 && e.keyCode <= 57)
+			// 禁用默认行为 
+			return false;
+	}
+	input.onkeyup = function(e){
+		// 按下回车
+		if(e.keyCode == 13)
+			alert(input.value)
+	}
+</script>

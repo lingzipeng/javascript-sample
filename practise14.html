@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>自动切换图片</title>
+	</head>
+	<body>
+		<div id="content">
+			<img id="img" src="img/pic1.jpg" >
+			<br />
+			<button type="button" id="btn01">开始</button>
+			<button type="button" id="btn02">停止</button>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	// 使图片可以自动切换
+	var img =document.getElementById("img")
+	// 创建一个数组保存图片路径
+	var imgArr = ["img/pic1.jpg","img/pic2.jpg","img/pic3.jpg"]
+	// 保存图片索引
+	var index = 0;
+	// 保存定时器标识
+	var timer;
+	var btn01 = document.getElementById("btn01")
+	btn01.onclick = function(){
+		// 在开启定时器之前要将上一个定时器关闭，不然会有多个定时器同时运行
+		clearInterval(timer)
+		timer = setInterval(function(){
+			img.src = imgArr[index++];
+			if(index == imgArr.length)
+				index -= imgArr.length;
+		},1000)
+		console.log(timer)
+	}
+	btn02.onclick = function(){
+		clearInterval(timer)
+	}
+</script>
+
+<style type="text/css">
+	#content{
+		width: 37.5rem;
+		margin: 3.125rem auto;
+		background-color: #f5f5f5;
+		text-align: center;
+	}
+	button{
+		width: 6.25rem;
+		margin: 0.3125rem;
+		padding: 0.3125rem;
+		color: #333333;
+		border-radius:0.3125rem ;
+		background-color: #f2f2f2;
+		border:0.0625rem solid #d4d4d4;
+	}
+</style>

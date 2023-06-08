@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- dom事件详见https://www.runoob.com/js/js-htmldom-events.html -->
+		<!-- 结构和行为耦合，不推荐使用 -->
+		<button id="btn" onclick="alert('test')">按钮</button>
+		<button id="btn2" ondblclick="alert('test2')">按钮2</button>
+		<button id="btn3" onmousemove="alert('test3')">按钮3</button>
+		<button id="btn4">按钮4</button>
+	</body>
+</html>
+
+<script type="text/javascript">
+	// 事件：用户和浏览器之间的交互行为
+	// 可以为按钮对应事件绑定处理函数响应事件
+	var btn = document.getElementById("btn4")
+	btn.onclick = function(){
+		alert("test4")
+	}
+</script>

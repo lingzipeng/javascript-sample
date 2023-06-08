@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// break
+			for(var i=0 ; i < 5;i++){
+				console.log(i)
+				if(i == 2){
+					break;
+				}
+			}
+			for(var i=0; i<5; i++){
+				console.log("外层循环"+i)
+				for(var j=0; j<5 ;j++){
+					break;
+					console.log("内层循环"+j)
+				}
+			}
+			// 使用break语句时，可在break后跟着一个label
+			outer:
+			for(var i=0; i<5; i++){
+				console.log("外层循环"+i)
+				for(var j=0; j<5 ;j++){
+					break outer;
+					console.log("内层循环"+j)
+				}
+			}
+			
+			// continue
+			for(var i=0 ; i < 5;i++){
+				if(i == 2){
+					continue;
+				}
+				console.log(i)
+			}
+			for(var i=0; i<5; i++){
+				console.log("外层循环"+i)
+				for(var j=0; j<5 ;j++){
+					continue;
+					console.log("内层循环"+j)
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

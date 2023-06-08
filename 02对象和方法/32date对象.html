@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//Date对象用来表示一个时间 
+			// 如果直接使用构造函数创建一个Date对象，会封装为当前代码执行时间
+			var d = new Date();
+			console.log(d)
+			// 日期格式 月/日/年 时:分:秒
+			var d2 = new Date("1/1/2000 1:11:11")
+			console.log(d2)
+			
+			
+			// getTime()获取时间戳
+			var date = d2.getTime()
+			console.log(date)
+			// Date.now()获取当前时间戳
+			date = Date.now()
+			console.log(date)
+			// 更多Date对象方法信息详见https://www.runoob.com/jsref/jsref-obj-date.html
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button" id="btn01">点击按钮修改样式</button>
+		<button type="button" id="btn02">点击按钮修改样式2</button>
+		<button type="button" id="btn03">删除指定样式</button>
+		<div class="b1" id="box"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var btn01 = document.getElementById("btn01")
+	var btn02 = document.getElementById("btn02")
+	var btn03 = document.getElementById("btn03")
+	var box = document.getElementById("box")
+	btn01.onclick = function(){
+		// 通过style属性修改样式，每改一次样式，浏览器就要渲染一次，性能较差
+		// box.style.width = "200px"
+		// box.style.height = "200px"
+		// 可通过修改classname修改样式
+		box.className = "b2"
+	}
+	btn02.onclick = function(){
+		// 判断box中有无b3
+		hasClass(box,"b3")
+		// 修改指定样式
+		addClass(box,"b3")
+	}
+	btn03.onclick = function(){
+		// 判断box中有无b3
+		removeClass(box,"b3")
+	}
+	
+	// 定义一个函数，像元素中添加指定的class属性值
+	// obj添加class的元素
+	// cn添加的class值
+	function addClass(obj,cn){
+		obj.className +=" "+cn
+	}
+	// 判断元素中是否含有指定的class属性值
+	function hasClass(obj,cn){
+		// 判断obj中有无cn
+		// var flag = false;
+		// var classlist = obj.className.split(" ");
+		// classlist.forEach(function(temp){
+		// 	if(temp == cn){
+		// 		console.log("yes")
+		// 		flag = true
+		// 	}
+		// })
+		// return flag
+		// 使用正则表达式
+		var reg = new RegExp("\\b"+cn+"\\b") 
+		console.log(reg.test(obj.className))
+		return reg.test(obj.className)
+	}
+	
+	// 删除元素中的class属性
+	function removeClass(obj,cn){
+		var reg = new RegExp("\\b"+cn+"\\b")
+		console.log(obj.className.replace(reg , ""))
+		obj.className = obj.className.replace(reg , "")
+	}
+	
+	// toggleClass切换一个类，有则删除，无则添加
+	function toggleClass(obj,cn){
+		if(hasClass(obj,cn))
+			removeClass(obj,cn)
+		else
+			addClass(obj,cn)
+	}
+</script>
+<style type="text/css">
+	.b1{
+		width: 6.25rem;
+		height: 6.25rem;
+		background-color: red;
+		position: absolute;
+	}
+	.b2{
+		width: 12.5rem;
+		height: 12.5rem;
+		background-color: yellow;
+		position: absolute;
+	}
+	.b3{
+		width: 12.5rem;
+		background-color: yellow;
+		position: absolute;
+	}
+</style>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 对象分为：内建对象，宿主对象，自定义对象
+			// 数组（array）也是一个对象，数组使用数字下标作为索引操作元素
+			// 索引index从0开始
+			
+			var arr = new Array();
+			console.log(typeof arr)
+			// 添加元素
+			arr[0] = 1;
+			arr[1] = 2;
+			console.log(arr)
+			console.log(arr[1])
+			// 不存在则返回undefined
+			console.log(arr[3]);
+			
+			console.log(arr.length)
+			// 对于非连续的数组，length会获取到最大索引+1,尽量不要写非连续的数组
+			arr[10] = 10;
+			console.log(arr.length)
+			
+			// 如果修改的length大于原长度，多出的部分会空出来
+			arr.length = 100;
+			console.log(arr.length)
+			// 如果修改的length小于原长度，多出的部分会删除
+			arr.length = 1;
+			console.log(arr)
+			
+			// 像数组最后一个位置添加元素
+			arr[arr.length] = 100;
+			console.log(arr)
+			
+			// 使用字面量创建数组
+			var arr2 = [1,2,3,4,5,6,7];
+			console.log(arr2)
+			
+			// 使用构造函数创建
+			var arr3 = new Array(10,20,30);
+			console.log(arr3)
+			var arr4 = new Array(10)
+			console.log(arr4)
+			
+			// 数组中的元素可以是任意数据类型
+			arr2.push("aaa")
+			arr2.push(function(){alert("haha")});
+			console.log(arr2);
+			
+			// array数组方法详见https://www.runoob.com/jsref/jsref-obj-array.html,重要,需要熟练掌握
+			var arra = [];
+			// push
+			var result = arra.push("a","b","c");
+			console.log(arra);
+			console.log(result)
+			// pop
+			result = arra.pop();
+			console.log(arra);
+			console.log(result);
+			// unshift
+			result = arra.unshift("add");
+			console.log(arra);
+			console.log(result);
+			// shift
+			result = arra.shift();
+			console.log(arra);
+			console.log(result);
+			
+			// 数组遍历
+			arra.forEach(function (temp){
+				console.log(temp);
+			})
+			// foreach第一个参数是当前正在遍历的元素value,第二个参数是当前正在遍历的元素索引index，第三个参数是正在遍历的数组obj
+			arra.forEach(function (a,b,c){
+				console.log(a);
+				console.log(b);
+				console.log(c);
+			})
+			
+			arra.push("d","e","f")
+			//slice()
+			// 截取开始位置的索引，包含开始索引
+			// 截取结束位置的索引，不包含结束索引,第二个参数省略，截取开始索引往后所有元素
+			result = arra.slice(1,3);
+			console.log(arra);
+			console.log(result);
+			// 索引可以是负值，表示从后往前计算
+			result = arra.slice(-3,-1);
+			console.log(result);
+			
+			// splice()
+			// 删除数组中指定元素
+			// 第一个参数表示开始位置的索引，第二个参数表示删除元素的数量,第三个及以后传递新元素，将自动插入到开始位置索引前面
+			result = arra.splice(0,1);
+			console.log(result);
+			console.log(arra);
+			result = arra.splice(1,1,"testa","testb");
+			
+			// concat()
+			// 不会对原数组产生影响
+			var arrb = ["testc","testd"];
+			console.log(arra.concat(arrb));
+			
+			// join()
+			// 默认逗号，可修改连接符
+			var str = arra.join(",");
+			console.log(str);
+			console.log(typeof str);
+			
+			// reverse()
+			// 会对原数组产生影响
+			arra.reverse();
+			console.log(arra);
+			
+			var arrc = [3,2,5,19]
+			// sort()
+			// 会对原数组产生影响，默认按照unicode编码排序，因此对数字排序会得出错误结果
+			// arra.sort();
+			// console.log(arra)
+			// 可以在sort()添加一个回调函数，来指定排序规则
+			// a下标一定在b前面
+			arrc.sort(function(a,b){
+				return a-b
+			})
+			// 浏览器会根据sort函数回调的返回值决定顺序,若返回大于0的值，则元素交换位置,返回小于0的值则不换位置，等于0则相等
+			console.log(arrc)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

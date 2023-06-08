@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button" id="btn01">点我一下</button>
+		<button type="button" id="btn02">点我一下</button>
+	</body>
+</html>
+<script type="text/javascript">
+	var btn01 =document.getElementById("btn01");
+	var btn02 =document.getElementById("btn02");
+	// 使用对象.事件 = 函数的形式只能绑定一个响应函数
+	btn01.onclick = function(){
+		alert("1");
+	}
+	// 为btn01绑定第二个响应函数会覆盖掉前一个
+	btn01.onclick = function(){
+		alert("2");
+	}
+	// addEventListener(时间的字符串不要on,回调函数,是否在捕获阶段触发事件一般都传false)也可以绑定响应函数
+	// addEventListener()可同时绑定多个响应函数，事件触发时会根据函数绑定顺序执行
+	btn02.addEventListener("click",function(){
+		alert("1");
+	},false)
+	btn02.addEventListener("click",function(){
+		alert("2");
+	},false)
+</script>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 垃圾回收（GC）
+			var obj = new Object();
+			// 当一个对象没有任何属性对他进行引用，此时我们无法操作该对象，该对象会占用大量内存导致程序变慢，被称为垃圾
+			// js中有自动垃圾回收机制，会自动将垃圾对象从内存中销毁
+			// 我们需要做的是将不再需要使用的对象定义为null
+			obj = null;
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

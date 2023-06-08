@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 在调用函数时，浏览器会传递进两个隐含的参数：上下文对象this，封装实参的对象arguments
+			function fun(){
+				console.log(arguments)
+				console.log(typeof arguments)
+				console.log(Array.isArray(arguments))
+			}
+			fun();
+			// arguments是一个类数组对象,可以通过索引操作数据，也可以获取长度
+			// 调用函数时，传递的实参会在arguments中保存
+			// 即使不定义形参也可以通过arguments使用实参
+			function fun2(){
+				var x = 0;
+				for(var i = 0;i < arguments.length;i++)
+					x+=arguments[i];
+				console.log(x);
+			}
+			fun2(100,5,10);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

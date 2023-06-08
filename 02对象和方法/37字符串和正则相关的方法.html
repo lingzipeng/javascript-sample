@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var str = "1a2b3c4d5e"
+			// split()根据任意字母进行字符串拆分
+			// 即使不指定全局匹配也会全部拆分
+			var result = str.split(/[a-z]/)
+			console.log(result)
+			// search()搜索字符串中是否含有指定内容,可以接收正则表达式
+			var str2 = "hello aba hello aca"
+			result = str2.search(/a[bcde]a/)
+			console.log(result)
+			// match()根据正则表达式从一个字符串将符合条件的内容提取出来,返回数组
+			// 默认情况下match只会找到第一个符合要求的内容，可设置正则表达式为全局匹配模式
+			result = str2.match(/a[bcde]a/g)
+			console.log(result)
+			// replace()将字符串中指定内容替换为新内容
+			// 第一个参数被替换的内容，第二个参数新内容
+			result = str2.replace(/a[bcde]a/g,"newword")
+			console.log(result)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

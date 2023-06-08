@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>轮播图</title>
+	</head>
+	<body>
+		<div id="outer">
+			<ul id="imglist">
+				<li><img src="img/pic1.jpg" ></li>
+				<li><img src="img/pic2.jpg" ></li>
+				<li><img src="img/pic3.jpg" ></li> 
+				<li><img src="img/pic4.jpg" ></li>
+				<li><img src="img/pic1.jpg" ></li>
+			</ul>
+			<!-- 创建导航按钮 -->
+			<div id="navdiv">
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload = function(){
+		// 设置imglist宽度
+		// 获取imglist
+		var imglist = document.getElementById("imglist");
+		// 获取所有img标签
+		var imgArr = document.getElementsByTagName("img");
+		// 设置imglist宽度
+		imglist.style.width = 600 * imgArr.length +"px";
+		
+		var navdiv = document.getElementById("navdiv");
+		var outer = document.getElementById("outer");
+		// navdiv居中：(outer宽度-navdiv宽度)/2 
+		navdiv.style.left = (outer.offsetWidth - navdiv.offsetWidth)/2 +"px"
+		
+		// 获取所有a
+		var allA = document.getElementsByTagName("a");
+		// 默认显示图片的索引
+		var index = 0;
+		// 默认的选中效果
+		allA[index].style.backgroundColor = "#F2F2F2"
+		// 自动切换标识
+		var timer;
+		
+		autochange();
+		
+		// 点击超链接切换到指定图片
+		for(let i=0;i<allA.length;i++){
+			allA[i].onclick = function(){
+				
+				// 关闭自动切换的定时器
+				clearInterval(timer)
+				// 获取点击超链接的索引
+				console.log(i)
+				index = i
+				// imglist.style.left = -600*i +"px"
+				setA(i);
+				// 使用move函数移动图片
+				move(imglist,"left",-600*i,50,function(){
+					autochange()
+				})
+			}
+		}
+		
+		// 船舰一个方法设置a的颜色
+		function setA(index){
+			// 判断当前索引是否是最后一张图片
+			if(index >= imgArr.length - 1){
+				index = 0;
+				
+				// 此时显示最后一张图片，而最后一张图片与第一张一样
+				// 通过css将最后一张变为第一张
+				imglist.style.left = 0;
+			}
+			console.log(index)
+			for(var i=0;i<allA.length;i++){
+				// 删除a内联样式
+				allA[i].style.backgroundColor = ""
+			}
+			allA[index].style.backgroundColor = "#F2F2F2"
+		}
+		
+		// 自动切换
+		function autochange(){
+			timer = setInterval(function(){
+				index++;
+				index %= imgArr.length
+				move(imglist,"left",-600*index,10,function(){
+					setA(index)
+				});
+			},3000)
+		}
+	}
+</script>
+<script type="text/javascript">
+	// obj执行动画的对象
+	// attr执行动画的样式，left，top，width，height
+	// target执行动画的目标位置
+	// speed速度 正负号控制方向
+	// callback 回调函数
+	function move(obj,attr,target,speed,callback){
+		// 关闭上一个计时器
+		clearInterval(obj.timer)
+		
+		// 获取元素目前位置
+		var current = parseInt(getComputedStyle(obj,null)[attr])
+		// 判断速度正负值
+		if(current > target){
+			speed = -speed
+		}
+		
+		// 开启一个定时器执行动画效果
+		obj.timer = setInterval(function(){
+			// 获取原样式
+			var oldvalue = parseInt(getComputedStyle(obj,null)[attr]);
+			// 在旧值上增加
+			var newvalue = oldvalue +speed;
+			
+			// 移动完成后调整位置
+			if((speed < 0 && newvalue < target) || (speed > 0 && newvalue > target)){
+				newvalue = target;
+			}
+			
+			obj.style[attr] = newvalue + "px";
+			
+			// 当元素移动到0px停止执行动画
+			if(newvalue == target){
+				// 关闭计时器
+				clearInterval(obj.timer);
+				// 执行回调函数
+				callback();
+			}
+		},10)
+	}
+</script>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	img{
+		width: 36.25rem;
+		height: 20.8125rem;
+	}
+	#imglist{
+		list-style: none;
+		/* width: 112.5rem; */
+		position: absolute;
+		/* 每移动600px就移动到下一张 */
+		left: 0px;
+	}
+	#imglist li{
+		float: left;
+		margin: 0 0.625rem;
+	}
+	#outer{
+		width: 37.5rem;
+		height: 20.8125rem;
+		margin: 3.125rem auto;
+		background-color: #F2F2F2;
+		text-align: center;
+		padding: 0.625rem 0;
+		position: relative;
+		overflow: hidden;
+	}
+	#navdiv{
+		position: absolute;
+		bottom: 0.9375rem;
+	}
+	#navdiv a{
+		display: block;
+		width: 1.25rem;
+		height: 1.25rem;
+		border-radius: 0.625rem;
+		background-color: #FF0000;
+		float: left;
+		margin: 0 0.3125rem;
+		opacity: 0.6;
+	}
+	#navdiv a:hover{
+		background-color: #F2F2F2;
+	}
+</style>

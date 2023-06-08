@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 函数也是一个对象
+			// 函数可以封装一些功能
+			// 函数保存一些代码在需要时使用
+			
+			// 创建一个函数对象
+			var fun = new Function();
+			console.log(typeof fun)
+			// 可以将封装代码以字符串的形式传给构造函数
+			var fun = new Function("console.log('hello');");
+			// 调用函数
+			fun();
+			// 函数对象具有所有普通对象的功能
+			fun.test = "hello";
+			console.log(fun.test)
+			
+			// 使用函数声明创建函数
+			function fun2(){
+				console.log("function2")
+				alert("function2")
+				document.write("function2")
+			}
+			fun2();
+			
+			// 使用函数表达式创建函数,创建匿名函数并赋值
+			var fun3 = function(){
+				console.log("function3")
+			}
+			fun3();
+			
+			// 在（）中定义形参
+			// 使用return设置返回值
+			// return后的语句不会执行
+			function fun4(num1,num2){
+				return num1+num2;
+				console.log("aaa")
+			}
+			console.log(fun4(1,2))
+			// 实参可以是任意数据类型，要检查是否会收到非法参数
+			console.log(fun4(123,"hello"))
+			// 调用函数时，解析器也不会检查实参数量
+			console.log(fun4(123,456,789))
+			console.log(fun4(123))
+			
+			// return不跟任何值返回undefined,不写return也返回undefined
+			function fun5(){
+				return;
+			}
+			console.log(fun5())
+			
+			// 实参可以是对象，也可以是一个函数
+			function fun6(a){
+				console.log(a(123,456))
+			}
+			fun6(fun4)
+			
+			function fun7(a){
+				console.log("function is "+a);
+			}
+			fun7(function(){console.log("hello")})
+			// fun():相当于使用函数返回值，fun:相当于直接使用函数对象
+			// 返回值可以是任何数据类型
+			
+			// 在函数内在声明一个函数
+			function funa(){
+				function funb(){
+					alert("i m funb")
+				}
+				
+				return funb
+			}
+			
+			var x = funa();
+			console.log(x)
+			
+			// 立即执行函数(已无法使用)
+			// (function(a,b){
+			// 	console.log(a+b);
+			// })(1,2);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

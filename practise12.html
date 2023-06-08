@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var box1 = document.getElementById("box1")
+	// 鼠标在被拖拽元素按下时开始拖拽onmousedown
+	// 鼠标移动时被拖拽元素跟随鼠标移动onmousemove
+	// 鼠标松开时，被拖拽元素固定在当前位置onmouseup
+	box1.onmousedown = function(e){
+		// div 的偏移量
+		var ol = e.clientX - box1.offsetLeft;
+		var ot = e.clientY - box1.offsetTop;
+		document.onmousemove = function(e){
+			// var left = e.pageX;
+			// var top = e.pageY;
+			// box1.style.left = (left-parseInt(getComputedStyle(box1,null).width)/2)+"px";
+			// box1.style.top = (top-parseInt(getComputedStyle(box1,null).height)/2)+"px";
+			var left = e.clientX - ol;
+			var top = e.clientY - ot;
+			box1.style.left = left + "px";
+			box1.style.top = top + "px"
+		}
+	}
+	document.onmouseup = function(){
+		// 取消document的onmousemove事件
+		document.onmousemove = null;
+		// 取消document的onmouseup事件,有bug
+		document.onmouseup = null;
+	}
+</script>
+<style type="text/css">
+	#box1{
+		width: 3.125rem;
+		height: 3.125rem;
+		border-radius: 1.5625rem;
+		background-color:red ;
+		position: absolute;
+	}
+	#box2{
+		width: 3.125rem;
+		height: 3.125rem;
+		background-color:yellow ;
+		position: absolute;
+		top: 12.5rem;
+		left: 6.25rem;
+	}
+</style>

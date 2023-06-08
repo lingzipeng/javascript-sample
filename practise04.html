@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var a1 = 123;
+			function fun1(){
+				alert(a1);
+			}
+			fun1();
+			
+			var a2 = 123;
+			function fun2(){
+				alert(a2);
+				var a2 = 456;
+			}
+			fun2();
+			alert(a2);
+			
+			var a3 = 123;
+			function fun3(){
+				alert(a3);
+				a3 = 456;
+			}
+			fun3();
+			alert(a3)
+			
+			var a4 = 123;
+			function fun4(a4){
+				alert(a4);
+				a4 = 456;
+			}
+			fun4();
+			alert(a4);
+			
+			var a5 = 123;
+			function fun5(a5){
+				alert(a5);
+				a5 = 456;
+			}
+			fun5(123);
+			alert(a5)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

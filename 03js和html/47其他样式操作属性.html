@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box2" style="position: relative;">
+			<div id="box1"></div>
+		</div>
+		<div id="box4">
+			<div id="box5"></div>
+		</div>
+		<button type="button" id="btn01">按钮</button>
+		<button type="button" id="btn02">按钮2</button>
+		<button type="button" id="btn03">按钮3</button>
+		<button type="button" id="btn04">按钮4</button>
+	</body>
+</html>
+<script type="text/javascript">
+	var box1 = document.getElementById("box1");
+	var btn01 = document.getElementById("btn01");
+	var box4 = document.getElementById("box4");
+	btn01.onclick = function(){
+		// clientWidth和clientHeight属性获取元素的高度和宽度,包括内容区和内边距
+		// 只读，不能修改
+		alert(box1.clientWidth+" "+box1.clientHeight);
+	}
+	var btn02 = document.getElementById("btn02");
+	btn02.onclick = function(){
+		// offsetWidth和offsetHeight属性获取元素的高度和宽度,包括内容区和内边距
+		// offsetLeft和offsetTop属性获取元素的水平和垂直偏移量
+		// 只读，不能修改
+		alert(box1.offsetWidth+" "+box1.offsetHeight);
+		alert(box1.offsetLeft+" "+box1.offsetTop);
+	}
+	var btn03 = document.getElementById("btn03");
+	btn03.onclick = function(){
+		// offsetParent获取当前元素的定位父元素
+		// 获取到离当前元素最近的开启定位的祖先元素，如果所有祖先定位都没开启定位，返回body
+		var op = box1.offsetParent;
+		console.log(op);
+		alert(op.id);
+	}
+	var btn04 = document.getElementById("btn04");
+	btn04.onclick = function(){
+		// scrollHeight scrollWidth获取到整个滚动区域子元素高度和宽度
+		alert(box4.scrollHeight)
+		// scrolltop scrollleft获取到水平滚动条和垂直滚动条滚动的距离
+		alert(box4.scrollTop)
+		// 当满足scrollHeight - scrollTop = clientHeight,说明垂直滚动条到底了
+		alert(box4.scrollHeight - box4.scrollTop);
+	}
+</script>
+<style type="text/css">
+	#box1{
+		width: 12.5rem;
+		height: 12.5rem !important;
+		background-color: red;
+		padding: 0.625rem;
+		border: 10px solid #F2F2F2;
+		position: relative;
+	}
+	#box2{
+		padding: 6.25rem;
+	}
+	#box4{
+		width: 12.5rem;
+		height: 18.75rem;
+		background-color: #bfa;
+		overflow: auto;
+	}
+	#box5{
+		width: 9.375rem;
+		height: 37.5rem;
+		background-color: yellow;
+	}
+</style>
+

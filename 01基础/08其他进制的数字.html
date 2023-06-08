@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 16进制 
+			var a = 0xff;
+			console.log(a);
+			// 8进制
+			var b = 070;
+			console.log(b);
+			// 2进制
+			var c = 0b10;
+			console.log(c)
+			
+			// 有些浏览器当成8进制解析，有些浏览器则当成十进制解析
+			var d = "010";
+			console.log(parseInt(d))
+			
+			// 可以在parseInt中传入第二个参数指定数字的进制
+			console.log(parseInt(d,8))
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

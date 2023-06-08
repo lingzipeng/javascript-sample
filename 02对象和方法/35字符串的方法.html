@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 创建一个字符串
+			var str = "hello world"
+			// 在底层是以字符数组的形式保存的
+			console.log(str.length)
+			console.log(str[0])
+			// string方法详见https://www.runoob.com/jsref/jsref-obj-string.html
+			console.log(str.charAt(1));
+			console.log(str.charCodeAt(1));
+			console.log(String.fromCharCode(101));
+			console.log(String.fromCharCode(0x2681));
+			console.log(str.concat(" goodbye"));
+			console.log(str.indexOf("l"))
+			console.log(str.indexOf("z"))
+			// 第二个参数指定开始查找的位置
+			console.log(str.indexOf("l",3))
+			console.log(str.lastIndexOf("l"))
+			console.log(str.slice(1,5))
+			// dunstring不能接受负值
+			console.log(str.substring(1,2))
+			console.log(str.split(" "))
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

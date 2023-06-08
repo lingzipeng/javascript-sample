@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 创建一个构造函数，创建方式和普通函数没有区别
+			// 构造函数执行流程：1，创建一个新对象2，将新建的对象设置为函数中this3，逐行执行函数中的代码4，将新建对象作为返回值返回
+			// 使用同一个构造函数创建对象称为一类对象，使用该构造函数创建的对象称为实例
+			function Person(name,age,gender){
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+				// 为提高性能可将函数写在全局作用域中
+				this.sayhello = fun;
+			}
+			// 定义在全局作用域中污染了全局作用域的命名空间，此时可使用原型prototype实现
+			function fun(){
+				alert(this);
+			}
+			var per = new Person("张三",16,1);
+			console.log(per)
+			// 检查一个对象是否是一个类的实例
+			console.log(per instanceof Person)
+			// 所有对象都是Object子类
+			console.log(per instanceof Object)
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

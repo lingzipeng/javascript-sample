@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function Person(){
+				
+			}
+			// 我们创建的每一个函数解析器都会像函数中添加一个属性prototype,这个属性对应着原型对象
+			// 如果函数作为普通函数调用prototype没有任何作用，当函数作为构造函数调用时，所创建的对象中都会有一个隐含的属性指向该构造函数的原型对象，可以通过 _proto_ 访问该属性
+			console.log(Person.prototype)
+			var per = new Person();
+			console.log(per.__proto__ == Person.prototype)
+			// 原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象
+			// 可将对象中共有的内容统一设置到原型对象中
+			// 向原型对象中添加属性a
+			Person.prototype.a = 123;
+			console.log(per.a)
+			console.log("a" in per)
+			console.log(per.hasOwnProperty("a"))
+			// 当访问对象的一个属性或方法时，他会在对象自身中寻找，如果找到则直接使用，未找到则进入原型对象中寻找
+			per.a = 456;
+			console.log(per.a)
+			// 以后创建构造函数时，可以将这些对象的共有属性和方法同意添加到构造函数的原型对象中
+			
+			// 原型对象也是对象，所以他也有原型
+			// Object是祖先
+			console.log(per.__proto__.__proto__.hasOwnProperty("hasOwnProperty"))
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

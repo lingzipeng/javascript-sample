@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组去重</title>
+		<script type="text/javascript">
+			var arr = [1,2,3,3,2,1,5,4,2];
+			var result = [];
+			// 遍历原数组
+			arr.forEach(function(temp){
+				var flag = true;
+				// 遍历新数组查找有无重复
+				result.forEach(function(temp2){
+					if(temp2 == temp)
+						flag = false;
+				})
+				if(flag)
+					result.push(temp);
+			})
+			console.log(result)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

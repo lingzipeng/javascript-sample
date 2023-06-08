@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组形式返回18岁以上person对象</title>
+		<script type="text/javascript">
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			var perlist = [];
+			perlist[0] = new Person("a",10);
+			perlist[1] = new Person("b",20);
+			perlist[2] = new Person("c",5);
+			perlist[3] = new Person("d",40);
+			perlist[4] = new Person("e",50);
+			
+			var resultlist = [];
+			perlist.forEach(function(temp){
+				if (temp.age >= 18)
+					resultlist.push(temp)
+			})
+			console.log(resultlist)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>100以内的质数</title>
+		<script type="text/javascript">
+			// 程序执行前，开启计时器
+			// console.time("计时器名字")开启计时器
+			console.time("test")
+			for(var i = 2;i <= 100; i++){
+				// 保存结果，默认i为质数
+				var flag = true;
+				
+				// 开方i
+				for(var j = 2;j < Math.sqrt(i);j++){
+					if(i%j == 0){
+						flag = false;
+						// 使用break语句提升性能
+						break;
+					}
+				}
+				
+				if(flag){
+					// 渲染页面需要时间。使用计时器时应注释掉
+					// document.write(i+"<br />")
+				}
+			}
+			// 终止计时器
+			console.timeEnd("test")
+			// 不加break1.79ms
+			// 加break0.17ms
+			// 优化j<i0.07ms
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>History</h1>
+		<a href="test.html">页面跳转</a>
+		<button type="button" id="btn01">上一页</button>
+		<button type="button" id="btn02">下一页</button>
+		<button type="button" id="btn03">跳转</button>
+		<h1>Location</h1>
+		<button type="button" id="btn04">获取地址</button>
+		<button type="button" id="btn05">刷新</button>
+		<button type="button" id="btn06">跳转2</button>
+	</body>
+</html>
+<script type="text/javascript">
+	// bom:浏览器对象模型 可以通过js操作浏览器
+	// bom对象
+	// Window浏览器窗口,网页中的全局对象
+	// Navigator当前浏览器信息,识别不同浏览器,由于历史原因,Navigator对象中的大部分属性已经不能帮助我们识别浏览器了
+	// Location当前浏览器的地址栏信息可操作浏览器跳转页面
+	// History浏览器历史记录,由于隐私原因,不能获取具体历史记录,只能控制浏览器向前或向后翻页
+	// Screen用户屏幕的信息,通过该对象获取到用户显示器相关信息
+	// 详见https://www.runoob.com/jsref/obj-window.html
+	
+	// bom对象在浏览器中都是作为windows对象属性保存的
+	// navigator
+	console.log(window.navigator)
+	console.log(navigator.userAgent)
+	
+	// history
+	// length获取到当前访问的链接数量
+	console.log(history.length)
+	var btn01 = document.getElementById("btn01")
+	var btn02 = document.getElementById("btn02")
+	var btn03 = document.getElementById("btn03")
+	btn01.addEventListener("click",function(){
+		// back()回退到上一个页面
+		history.back()
+	},false)
+	btn02.addEventListener("click",function(){
+		// forward()前进到下一个页面
+		history.forward()
+	},false)
+	btn03.addEventListener("click",function(){
+		// go(跳转页面数)跳转到指定页面
+		history.go(-2)
+	},false)
+	
+	// location
+	var btn04 = document.getElementById("btn04")
+	var btn05 = document.getElementById("btn05")
+	var btn06 = document.getElementById("btn06")
+
+	btn04.addEventListener("click",function(){
+		// 直接打印location,可以得到当前页面完整路径
+		alert(location)
+		// 可直接修改location属性
+		location = "http://www.baidu.com"
+		// reload()重新加载页面,加上参数true强制清空缓存刷新页面
+		location.reload(true)
+		// replace()使用新页面替换当前页面,不会生成历史记录
+		location.replace("http://www.baidu.com")
+	},false)
+	btn05.addEventListener("click",function(){
+		// reload()重新加载页面,加上参数true强制清空缓存刷新页面
+		location.reload(true)
+	},false)
+	btn06.addEventListener("click",function(){
+		// replace()使用新页面替换当前页面,不会生成历史记录
+		location.replace("http://www.baidu.com")
+	},false)
+</script>

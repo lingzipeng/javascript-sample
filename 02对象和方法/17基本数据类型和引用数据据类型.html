@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// object为引用数据类型，其余为基本数据类型
+			var a = 123;
+			var b = a;
+			a++;
+			console.log("a="+a);
+			console.log("b="+b);
+			
+			var obj= new Object();
+			obj.name = "aaa";
+			var obj2= obj;
+			obj.name = "bbb";
+			console.log(obj.name);
+			console.log(obj2.name);
+			// 基本数据类型直接在栈内存中存储，值与值之间独立存在，不会互相影响
+			// 对象保存在堆内存，每创建一个新变量，就会在堆内存中开辟一个新空间，变量保存的是对象地址，因此通过一个变量修改属性时，另一个也会受影响
+			var obj3 = new Object();
+			var obj4 = new Object();
+			obj3.name = "a";
+			obj4.name = "a";
+			// 比较两个引用数据类型，是比较对象的内存地址
+			console.log(obj3 == obj4)
+			console.log(obj == obj2)
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

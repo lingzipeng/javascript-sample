@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>if语句练习</title>
+		<script type="text/javascript">
+			var score = prompt("请输入小明的成绩");
+			// alert(score);
+			if( score > 100 || score <= 0 || isNaN(score)){
+				document.write("错误")
+			}else{
+				if( score <= 60 )
+					document.write("吃席")
+				else if(score <= 70 )
+					document.write("吃饭")
+				else if(score <= 80 )
+					document.write("吃菜")
+				else if(score <= 90 )
+					document.write("吃肉")
+				else if(score <= 100 )
+					document.write("想吃啥吃啥")	
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

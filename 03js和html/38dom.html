@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id = "btn">我是一个按钮</button>
+	</body>
+</html>
+
+<script type="text/javascript">
+	// dom全称document object model文档对象模型
+	// document文档表示整个html文档
+	// object对象表示将网页中每个部分都转换成一个对象
+	// model通过模型表示对象间的关系，dom树详见https://www.runoob.com/dom/dom-nodetree.html
+			
+	// node 节点，是构成网页的基本组成部分每一部分被称为一个节点
+	<!-- <p id = "pid">text</p> -->
+	// 整个html文档称为文档节点 nodeTyp:9 nodeValue:null
+	// html文档中的html标签被称为元素节点<p> nodeType:1 nodeValue:null
+	// 属性被称为属性节点 id = "pid" nodeType:2 nodeValue:pid
+	// 文本内容被称为文本节点text nodeType:3 nodeValue:text
+			
+	// 浏览器已经提供了文档节点对象，这个对象是window属性
+	console.log(document);
+	// 获取到button对象
+	var btn = document.getElementById("btn");
+	console.log(btn);
+	// 修改按钮的文字
+	console.log(btn.innerHTML);
+	btn.innerHTML = "按钮";
+</script>

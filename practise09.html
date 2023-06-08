@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>全选练习</title>
+	</head>
+	<body>
+		<p>你爱好的运动是？</p>
+		<input id="chooseall" type="checkbox" name="chooseall" value="全选" />
+		全选
+		<br />
+		<div id="sportslist">
+			<input type="checkbox" name="sports" value="篮球" />
+			篮球
+			<input type="checkbox" name="sports" value="足球" />
+			足球
+			<input type="checkbox" name="sports" value="羽毛球" />
+			羽毛球
+			<input type="checkbox" name="sports" value="乒乓球" />
+			乒乓球
+		</div>
+		<br />
+		<button type="button" id="btn01">全选</button>
+		<button type="button" id="btn02">全不选</button>
+		<button type="button" id="btn03">反选</button>
+		<button type="button" id="btn04">提交</button>
+	</body>
+</html>
+
+<script type="text/javascript">
+	var btn01 = document.getElementById("btn01");
+	btn01.onclick = function(){
+		var sports = document.getElementsByName("sports");
+		console.log(sports);
+		for(var i = 0;i < sports.length;i++){
+			sports[i].checked = true
+		}
+		var chooseall = document.getElementById("chooseall");
+		chooseall.checked = true;
+	}
+	
+	var btn02 = document.getElementById("btn02");
+	btn02.onclick = function(){
+		var sports = document.getElementsByName("sports");
+		console.log(sports);
+		for(var i = 0;i < sports.length;i++){
+			sports[i].checked = false
+		}
+		var chooseall = document.getElementById("chooseall");
+		chooseall.checked = false;
+	}
+	
+	var btn03 = document.getElementById("btn03");
+	btn03.onclick = function(){
+		var sports = document.getElementsByName("sports");
+		var chooseall = document.getElementById("chooseall");
+		console.log(sports);
+		for(var i = 0;i < sports.length;i++){
+			sports[i].checked = !sports[i].checked;
+			// 判断是否全选
+			// 进入判断前将chooseall状态设置为true
+			chooseall.checked = true;
+			for(var j = 0;j < sports.length;j++){
+				console.log(sports[j].checked)
+				// 只要有一个没选上chooseall状态为false
+				if(!sports[j].checked){
+					chooseall.checked = false;
+				}
+			}
+		}
+	}
+	
+	var btn04 = document.getElementById("btn04");
+	btn04.onclick = function(){
+		var result =[]
+		var sports = document.getElementsByName("sports");
+		console.log(sports);
+		for(var i = 0;i < sports.length;i++){
+			if(sports[i].checked == true)
+				result.push(sports[i].value)
+		}
+		alert(result)
+	}
+	
+	// 为chooseall绑定响应函数
+	var chooseall = document.getElementById("chooseall")
+	chooseall.onclick = function(){
+		var sports = document.getElementsByName("sports");
+		for(var i = 0;i < sports.length;i++){
+			sports[i].checked = this.checked
+		}
+		
+	}
+	
+	// 如果多选框全部选中，chooseall选中
+	// 如果多选框全部没选中，chooseall不选中
+	var sports = document.getElementsByName("sports");
+	var chooseall = document.getElementById("chooseall");
+	for(var i = 0;i < sports.length; i++){
+		sports[i].onclick = function(){
+			// 进入判断前将chooseall状态设置为true
+			chooseall.checked = true;
+			for(var j = 0;j < sports.length;j++){
+				console.log(sports[j].checked)
+				// 只要有一个没选上chooseall状态为false
+				if(!sports[j].checked){
+					chooseall.checked = false;
+				}
+			}
+		}
+	}
+</script>

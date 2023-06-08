@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="content">
+			<table border="1px" id="employeeTable">
+				<tr>
+					<th>name</th>
+					<th>email</th>
+					<th>salary</th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr>
+					<td>小明</td>
+					<td>458609443@qq.com</td>
+					<td>1000</td>
+					<td><a href="deleteEmp?id=001">delete</a></td>
+				</tr>
+				<tr>
+					<td>小王</td>
+					<td>12345678@qq.com</td>
+					<td>2000</td>
+					<td><a href="deleteEmp?id=002">delete</a></td>
+				</tr>
+				<tr>
+					<td>小红</td>
+					<td>87654321@qq.com</td>
+					<td>5000</td>
+					<td><a href="deleteEmp?id=003">delete</a></td>
+				</tr>
+			</table>
+			<h4>添加新员工</h4>
+			<table>
+				<tr>
+					<td class="word">name:</td>
+					<td class="inp">
+						<input type="text" name="empName" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td class="word">email:</td>
+					<td class="inp">
+						<input type="text" name="email" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td class="word">salary:</td>
+					<td class="inp">
+						<input type="text" name="salary" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button id="addEmpbutton">submit</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	// 获取所有超链接
+	var allA = document.getElementsByTagName("a");
+	// 给超链接添加点击事件
+	for(var i = 0;i < allA.length;i++){
+		console.log("for循环正在执行"+i)
+		allA[i].onclick = function(){
+			// for循环会在页面加载完成后立即执行，响应函数在超链接点击时才执行，因此响应函数执行时，for循环已经执行完毕
+			console.log("响应函数正在执行"+i);
+			// this是点击的超链接
+			console.log(this);
+			// 获取当前tr
+			var tr = this.parentNode.parentNode;
+			console.log(tr)			
+			// confirm用于弹出一个带有确认和取消按钮的提示框,确认返回true,取消返回false
+			if(confirm("是否删除"+tr.firstElementChild.innerHTML+"吗?")){
+				tr.parentNode.removeChild(tr);
+			}
+			// 点击超链接以后,超链接默认行为会跳转页面,可通过return false取消默认行为
+			return false;
+		}
+	}
+	
+	var btn = document.getElementById("addEmpbutton")
+	btn.onclick = function(){
+		// 获取table父节点
+		var employeeTable = document.getElementById("employeeTable");
+		// 浏览器会给table增加一个tbody子节点,要将新增的tr加入tbody中
+		var tbody = employeeTable.getElementsByTagName("tbody")[0];
+		// 创建一个tr
+		var tr = document.createElement("tr");
+		// 获取input中的数据
+		var input = document.getElementsByTagName("input");
+		console.log(input);
+		// 将input中的数据依次放入tr
+		for(var i = 0;i < input.length;i++){
+			var td = document.createElement("td");
+			// 获取文本值放入td中
+			td.innerHTML = input[i].value;
+			tr.appendChild(td);
+			console.log(tr);
+		}
+		var td = document.createElement("td");
+		var a = document.createElement("a");
+		a.innerHTML = "delete";
+		a.href = "#";
+		td.appendChild(a);
+		tr.appendChild(td);
+		// 需要为新添加的a添加一次单击绑定函数
+		a.onclick = function(){
+			var tr = this.parentNode.parentNode;
+			console.log(tr)			
+			if(confirm("是否删除"+tr.firstElementChild.innerHTML+"吗?")){
+				tr.parentNode.removeChild(tr);
+			}
+			return false;
+		}
+		tbody.appendChild(tr);
+	}
+</script>
+
+<style type="text/css">
+	#content{
+		width: 31.25rem;
+		margin: 3.125rem auto;
+	}
+</style>

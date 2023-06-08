@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 算术运算符
+			// +
+			var result = 123 + 456;
+			console.log(result);
+			console.log(100 + null);
+			console.log(true + false);
+			console.log(1 + undefined);
+			// 对两个字符串进行加法运算会变为拼串操作
+			console.log("123" + "456");
+			// 任何值加字符串都会变成拼串操作
+			console.log(12+"345")
+			// 可用于拼接换行后的字符串
+			console.log("两个黄鹂鸣翠柳,"+
+						"一行白鹭上青天");
+						
+			console.log(1 + 2 + "3");
+			console.log("1" + 2 + 3);
+			// -
+			result = 456-123;
+			console.log(result);
+			console.log(100 - null);
+			console.log(true - false);
+			console.log(1 - undefined);
+			console.log(100 - "1");
+			// *
+			result = 5*5;
+			console.log(result);
+			console.log(100 * null);
+			console.log(true * false);
+			console.log(1 * undefined);
+			console.log(100 * "2");
+			//  /
+			result = 5/5;
+			console.log(result);
+			console.log(100 / null);
+			console.log(true / false);
+			console.log(1 / undefined);
+			console.log(100 / "2");
+			//  %
+			console.log(9 % 4);
+			
+			// 一元运算符只需要一个操作数
+			// +不对数字产生影响
+			var a = 123;
+			a = +a;
+			console.log(a);
+			// -对数字进行取反，先转换成number，再取反
+			a = "18";
+			console.log(-a);
+			
+			var num = 1 + +"2" + 3;
+			console.log(num);
+			
+			// 赋值运算符
+			var x = 5;
+			console.log(x+=5);
+			console.log(x-=5);
+			console.log(x*=5);
+			console.log(x/=5);
+			
+			// 关系运算符
+			console.log(5>10);
+			console.log(10>5);
+			console.log(10>=10);
+			// 对非数值进行比较会转换成数字
+			// true:1 null:0
+			console.log(10>=true);
+			console.log(2 > true);
+			// 任何值和undefined比较都是false
+			console.log(1>undefined);
+			// 两侧都是字符串会分别比较字符的unicode编码,编码详情https://www.runoob.com/w3cnote/charset-encoding.html
+			console.log("1">"5");
+			console.log("11"<"5");
+			console.log("a"<"b");
+			console.log("abcde"<"b");
+			
+			//相等运算符
+			console.log( 1 == 1 );
+			// 会进行自动类型转换
+			console.log("1" == 1 );
+			console.log("1" == true);
+			// undefined衍生自null
+			console.log( undefined == null );
+			// NaN不和任何值相等，包括它本身
+			console.log(NaN == NaN)
+			
+			// 可使用isNaN函数判断是否为NaN
+			var b = NaN
+			console.log(isNaN(b))
+			
+			//  不相等运算！=
+			console.log(5 != 5);
+			console.log("abc" != "abc");
+			console.log("55" != 55)
+			
+			// 全等 ===
+			// 不会做自动类型转换，类型不同直接返回false
+			console.log("123" === 123)
+			console.log(null === undefined)
+			
+			// 不全等！==
+			// 同样不会做自动类型转换
+			console.log(1 !== "1")
+			
+			// 三元运算符
+			// 条件表达式?语句1:语句二
+			// 值为true执行语句1，值为false执行语句二
+			10>5? console.log("yes"):console.log("no")
+			var x = 5; var y = 10; var c =20
+			// 获取最大值
+			var max = x > y ? x : y;
+			max = max > c ? max : c;
+			var max2 = a > b ? (a > c ? a : c):(b > c ? b : c)
+			console.log(max)
+			console.log(max2)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

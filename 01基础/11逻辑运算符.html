@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var a = false;
+			//! 非
+			console.log(!a);
+			console.log(!!a);
+			// 非布尔值会进行转换后取反
+			console.log(!100);
+			//&& 与
+			console.log(true && true);
+			console.log(true && false);
+			console.log(false && false);
+			// 第一个值为true，会检查第二个值
+			console.log(true&&alert("嘿嘿"));
+			console.log(false&&alert("哈哈"));
+			//|| 或
+			console.log(true || true);
+			console.log(true || false);
+			console.log(false || false);
+			// 第一个值为false，会检查第二个值
+			console.log(true || alert("嘿嘿2"));
+			console.log(false || alert("哈哈2"));
+			
+			// 对非布尔值运算，先转换为布尔值，再运算，但是返回原值
+			// 与运算，若都为true，则返回后面的
+			var result = 5 && 6;
+			console.log(result)
+			// 如果有false，则返回靠前的false
+			result = 5 && 0;
+			console.log(result);
+			result = undefined && 0;
+			console.log(result);
+			
+			// 或运算，返回靠前的true
+			result = 5 || 0;
+			console.log(result);
+			// 若第一个值为false，直接返回第二个值
+			result = undefined || 0;
+			console.log(result);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

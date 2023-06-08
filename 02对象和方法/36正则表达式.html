@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 正则表达式用于定义一些字符串的规则
+			// 创建正则表达式的对象
+			// 语法：var 变量 = new RegExp("正则表达式","匹配模式")
+			var reg = new RegExp("a");
+			var str = "abcde";
+			console.log(typeof reg);
+			console.log(reg);
+			// test()检查一个字符串是否符合正则表达式的规则
+			console.log(reg.test(str))
+			console.log(reg.test("x"))
+			// 在构造函数中可以传递一个匹配模式作为第二个参数
+			// i:忽略大小写 g:全局匹配模式
+			var reg2 = new RegExp("A","i");
+			console.log(reg2.test(str))
+			
+			// 使用字面量创建正则表达式
+			// var 变量 =/正则表达式/匹配模式
+			var reg3 = /a/i;
+			console.log(typeof reg3)
+			console.log(reg3.test(str))
+			
+			// 创建一个正则表达式，检查一个字符串中有a或b
+			var reg4 = /a|b/;
+			console.log(reg4.test("bcd"))
+			// []的内容也是或的关系
+			reg4 = /[ab]/;
+			console.log(reg4.test("asadsad"))
+			// 任意字母
+			reg4 = /[A-z]/
+			console.log(reg4.test("a213132"))
+			console.log(reg4.test("213132"))
+			// 同理[0-9]任意数字[a-z]任意小写字母[A-Z]任意大写字母
+			// 检查一个字符串中是否含有abc或adc或aec
+			reg4 = /a[bde]c/
+			console.log(reg4.test("adcqqqq"))
+			// [^]除了
+			reg4 = /[^a-z]/
+			console.log(reg4.test("a"))
+			console.log(reg4.test("123"))
+			// {}量词可以设置一个内容出现的次数
+			reg4 =/a{3}/
+			console.log(reg4.test("aaabcd"))
+			// 量词只对它前面的一个内容起作用
+			reg4 = /(ab){4}/
+			console.log(reg4.test("abababab"))
+			// {m,n}出现m到n次,{m,}m次以上
+			reg4 = /(ab){1,3}/
+			console.log(reg4.test("ababaaa"))
+			// +至少一个,相当于{1,}
+			reg4 = /ab+c/
+			console.log(reg4.test("abbbbbbbc"))
+			// *至少0个,相当于{0,}
+			reg4 = /ab*c/
+			console.log(reg4.test("ac"))
+			// ?表示0个或1个，相当于{0,1}
+			reg4 = /ab?c/
+			console.log(reg4.test("abbbc"))
+			// ^检查字符串是否以a开头
+			reg4 = /^a/
+			console.log(reg4.test("abcdf"))
+			// $表示结尾
+			reg4 = /a$/
+			console.log(reg4.test("dsfdsa"))
+			// regExp详见https://www.runoob.com/js/js-regexp.html
+			
+			// 创建一个正则表达式，检查一个字符串是否是合法的手机号
+			// 以1开头，第二位3-9，
+			var phonenum = "19912341234"
+			var regphone = /^1[3-9][1-9]{9}$/
+			console.log(regphone.test(phonenum))
+			
+			// .比较任意字符
+			reg4 = /./
+			console.log(reg4.test("b"))
+			
+			// 在正则表达式中使用\作为转义字符
+			// \.表示.,\\表示\
+			reg4 = /\./
+			console.log(reg4.test("sda.d"))
+			
+			reg4 = /\\/
+			console.log(reg4.test("aa\\"))
+			
+			// \w任意字母,数字，_ [A-z0-9_]
+			// \W除了字母，数字，_[^A-z0-9_]
+			// \d任意数字[0-9]
+			// \D除了数字[^0-9]
+			// \s空格
+			// \S除了空格
+			// \b单词边界
+			// \B除了单词边界
+			
+			// 创建一个正则表达式检查一个单词中是否含有child
+			reg4 = /\bchild\b/
+			console.log(reg4.test("hello child"))
+			console.log(reg4.test("hello children"))
+			
+			// 去除字符串中前后的空格
+			var str = "     ad min    "
+			str = str.replace(/^\s*|\s*$/g,"")
+			console.log(str)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

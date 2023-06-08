@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 浏览器加载界面时，是按照自上而下的顺序是加载的
+			// 此处代码执行时，页面还没有加载,dom对象也没有加载，因此无法获取
+			var btn = document.getElementById("btn")
+			console.log(btn)
+			// 因此将js代码编写到页面下部就是为了在页面加载完毕后执行js代码
+			// onload会在整个页面加载完成后触发
+			window.onload = function(){
+				var btn = document.getElementById("btn")
+				console.log(btn)
+			}
+		</script>
+	</head>
+	<body>
+		<button type="button" id="btn">btn</button>
+	</body>
+</html>

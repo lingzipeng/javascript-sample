@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="content">
+			<div id="formlist">
+				<div class="inner">
+					<p>你喜欢哪个城市</p>
+					<ul id="city">
+						<li id="bj">北京</li>
+						<li>上海</li>
+						<li>广州</li>
+						<li>杭州</li>
+					</ul>
+					<br />
+					<br />
+					<p>你喜欢哪款游戏</p>
+					<ul id="game">
+						<li id="gta">gta</li>
+						<li>csgo</li>
+						<li>destiny2</li>
+						<li>dota2</li>
+					</ul>
+					<br />
+					<br />
+					<p>你的手机操作系统是</p>
+					<ul id="phone">
+						<li>Ios</li>
+						<li id="android">Android</li>
+						<li>鸿蒙</li>
+					</ul>
+					<br />
+					<br />
+				</div>
+				<br />
+				<div class="inner">
+					<p>gender:</p>
+					<input class="test" type="radio" name="gender" value="male" />
+					male
+					<input type="radio" name="gender" value="female" />
+					female
+					<br />
+					<p>name:</p>
+					<input type="text" name="name" id="username" value=""/>
+					<br />
+					<br />
+				</div>
+			</div>
+			
+			<div id="btnlist">
+				<div><button id="btn01">查找#bj节点</button></div>
+				<div><button id="btn02">查找所有li节点</button></div>
+				<div><button id="btn03">查找name=gender所有节点</button></div>
+				<div><button id="btn04">查找#city下所有li节点</button></div>
+				<div><button id="btn05">查找#city下所有子节点</button></div>
+				<div><button id="btn06">查找#phone下第一个节点</button></div>
+				<div><button id="btn07">返回#bj父亲节点</button></div>
+				<div><button id="btn08">返回#android前一个兄弟节点</button></div>
+				<div><button id="btn09">返回#username的value属性值</button></div>
+				<div><button id="btn10">设置#username的value属性值</button></div>
+				<div><button id="btn11">返回#bj的文本值</button></div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	// 获取元素节点，通过document调用
+	// getElementById()通过id获取一个元素节点对象
+	// getElementsByTagName()通过标签名获取一组元素节点对象
+	// getElementsByName()通过name获取一组元素节点对象
+	
+	// 查找#bj节点
+	var btn01 = document.getElementById("btn01")
+	btn01.onclick = function(){
+		var bj = document.getElementById("bj");
+		console.log(bj);
+		alert(bj.innerHTML);
+	}
+	
+	// 查找所有li节点
+	var btn02 = document.getElementById("btn02");
+	btn02.onclick = function(){
+		var lis = document.getElementsByTagName("li");
+		// 会返回一个类数组对象
+		console.log(lis);
+		alert("总节点数为"+lis.length);
+	}
+	
+	// 查找name = gender所有节点
+	var btn03 =document.getElementById("btn03");
+	btn03.onclick = function(){
+		var inputs = document.getElementsByName("gender");
+		console.log(inputs);
+		// 对于自结束标签，innerHTML没有意义
+		// 如果要读取元素属性，直接使用 元素.属性名,读取class需要使用 元素.className
+		console.log(inputs[0].value)
+		console.log(inputs[0].className)
+		alert("总节点数为"+inputs.length);
+	}
+	
+	// 获取元素节点的子节点
+	// getElementsByTagName()返回当前节点指定标签名后代节点
+	// childNodes属性表示当前节点所有子节点
+	// firstChild属性表示当前节点第一个子节点
+	// lastChild属性表示当前节点最后一个子节点
+	
+	// children属性获取当前元素所有子元素
+	// firstElementChild属性获取当前元素的第一个子元素
+	
+	// 查找#city下所有li节点
+	var btn04 = document.getElementById("btn04");
+	btn04.onclick = function(){
+		var city = document.getElementById("city");
+		var lis = city.getElementsByTagName("li");
+		console.log(lis);
+		alert("共有"+lis.length+"个子节点");
+	}
+	// 查找#city下所有子节点
+	var btn05 = document.getElementById("btn05");
+	btn05.onclick = function(){
+		var city = document.getElementById("city");
+		// childeNodes会获取包括文本节点在内的所有节点，包括标签中换行空白的内容
+		console.log(city.childNodes);
+		console.log(city.children);
+		alert("共有"+city.children.length+"个子节点");
+	}
+	// 查找#phone下第一个节点
+	var btn06 = document.getElementById("btn06");
+	btn06.onclick = function(){
+		var phone = document.getElementById("phone");
+		// firstChild同样包括空白节点
+		console.log(phone.firstChild);
+		console.log(phone.firstElementChild);
+		alert(phone.firstElementChild.innerHTML)
+		
+	}
+	
+	// 获取父节点和兄弟节点
+	// parentNode属性表示当前节点的父节点
+	// previousSibling属性表示当前节点的前一个兄弟节点
+	// nextSibling属性表示当前节点的后一个兄弟节点
+	// previousElementSibling属性表示当前元素的前一个兄弟元素
+	
+	// 返回#bj父亲节点
+	var btn07 = document.getElementById("btn07")
+	btn07.onclick = function(){
+		var bj = document.getElementById("bj")
+		console.log(bj.parentNode)
+		alert(bj.parentNode.innerText)
+	}
+	// 返回#android前一个兄弟节点
+	var btn08 = document.getElementById("btn08")
+	btn08.onclick = function(){
+		var android = document.getElementById("android")
+		// previousSibling也会获取空白文本
+		console.log(android.previousSibling)
+		console.log(android.previousElementSibling)
+		alert(android.previousElementSibling.innerHTML)
+	}
+	// 返回#username的value属性值
+	var btn09 = document.getElementById("btn09")
+	btn09.onclick = function(){
+		var username = document.getElementById("username")
+		console.log(username.value)
+		alert(username.value)
+	}
+	// 设置#username的value属性值
+	var btn10 = document.getElementById("btn10")
+	btn10.onclick = function(){
+		var username = document.getElementById("username");
+		var newusername = prompt("请输入新的username");
+		username.value = newusername;
+	}
+	// 返回#bj的文本值
+	var btn11 = document.getElementById("btn11")
+	btn11.onclick = function(){
+		var bj = document.getElementById("bj");
+		// alert(bj.innerText);
+		// 第一个子节点是文本节点，通过nodevalue可获取文本节点的文本值
+		alert(bj.firstChild.nodeValue);
+	}
+</script>
+
+<style type="text/css">
+	p{
+		color: #333333;
+		margin: 0.3125rem;
+	}
+	ul{
+		list-style-type:none
+	}
+	li{
+		color: #666666;
+		background-color: #f2f2f2;
+		border: 0.0625rem solid #d4d4d4;
+		border-radius:0.3125rem ;
+		float: left;
+		margin: 0.3125rem;
+		padding: 0.3125rem;
+	}
+	input{
+		margin: 0.3125rem;
+	}
+	button{
+		width: 18.75rem;
+		margin: 0.3125rem;
+		padding: 0.3125rem;
+		color: #333333;
+		border-radius:0.3125rem ;
+		background-color: #f2f2f2;
+		border:0.0625rem solid #d4d4d4;
+	}
+	#content{
+		width: 62.5rem;
+		margin:3.125rem auto;
+	}
+	#btnlist{
+		float: left;
+	}
+	#formlist{
+		float: left;
+	}
+	.inner{
+		border: 0.0625rem solid #d4d4d4; 
+		margin: 0.3125rem;
+		border-radius: 0.625rem;
+		width: 31.25rem;
+	}
+</style>

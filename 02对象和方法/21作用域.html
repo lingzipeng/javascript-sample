@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 作用域是一个变量作用的范围
+			// 全局作用域：直接编写在script标签中的js代码，在页面打开时创建，在页面关闭时销毁
+			// 全局作用域变量都是全局变量
+			// 全局作用域中有一个全局对象window，代表的是浏览器窗口，浏览器创建我们可以直接使用
+			console.log(window);
+			var a = 10;
+			console.log(window.a)
+			 
+			// 变量的声明提前
+			// 使用var关键字声明的变量，会在所有代码执行前被声明,但不会赋值
+			console.log(b);
+			var b = 1100;
+			
+			// 使用函数声明形式创建的function 函数(){}，他会在所有代码执行前被创建
+			fun();
+			// fun2();
+			 
+			function fun(){
+				console.log("fun1")
+			}
+			 
+			var fun2 = function(){
+				console.log("fun2")
+			}
+			 
+			// 函数作用域：:调用函数时创建，执行完毕后函数作用域销毁
+			// 函数作用域可以访问全局作用域的变量
+			// 在函数作用域中操作一个变量，会先在自身作用域中寻找，如果没找到就去上级作用域上找，如果全局作用域中依然没找到，会报错referenceError
+			// 在函数中，不用var声明的变量都会成为全局变量
+			var a = 10;
+			function myfun(){
+				var a = "haha";
+				console.log(a);
+				// 在函数中访问全局变量
+				console.log(window.a)
+				var x = 20;
+			}
+			myfun();
+			// console.log(x);
+			// 函数作用域中也有声明提前特性
+			function myfun2(){
+				myfun3();
+				console.log(aa);
+				var aa = 15;
+				function myfun3(){
+					console.log("myfun3")
+				}
+			}
+			myfun2();
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

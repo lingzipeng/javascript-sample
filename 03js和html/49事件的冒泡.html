@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box1">
+			我是box1
+			<span id="s1">
+				我是span
+			</span>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//事件的冒泡（bubble）：事件的向上传导，当后代元素的事件被触发，祖先元素的相同事件也会被触发 
+	//在开发中大部分情况冒泡都是有用的，如果不希望发生事件冒泡可以通过事件对象取消冒泡
+	var s1 =document.getElementById("s1");
+	s1.onclick = function(e){
+		alert("s1")
+		// 取消冒泡
+		e.cancelBubble = true;
+	}
+	var box1 =document.getElementById("box1");
+	box1.onclick = function(){
+		alert("box1")
+	}
+	document.body.onclick = function(){
+		alert("body")
+	}
+</script>
+
+<style type="text/css">
+	#box1{
+		width: 12.5rem;
+		height: 12.5rem;
+		background-color: red;
+	}
+	#s1{
+		background-color: yellowgreen;
+	}
+</style>

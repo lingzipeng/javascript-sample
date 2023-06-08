@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>电子邮箱的正则</title>
+		<script type="text/javascript">
+			var str = prompt("请输入电子邮箱")
+			// 任意字母数字下划线(3位以上) . 任意字母数字下划线(可有可无) @ 任意字母数字 . 2-5位字母 .2-5位字母
+			var reg = /^\w{3,}(\.\w+){0,1}@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/
+			if(reg.test(str))
+				alert("注册成功，邮箱名" + str)
+			else 
+				alert("电子邮箱不合法")
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

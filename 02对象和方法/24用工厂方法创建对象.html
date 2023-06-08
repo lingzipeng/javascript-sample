@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 使用工厂方法创建对象
+			function createPerson(name,age,gender){
+				// 创建一个新对象
+				var obj = new Object();
+				
+				// 像对象中添加属性
+				obj.name = name ;
+				obj.age = age ;
+				obj.gender = gender;
+				obj.sayname = function(){
+					alert(this.name)
+				}
+				// 将新对象返回
+				return obj;
+			}
+			
+			var obja = createPerson("aaa",1,1);
+			var objb = createPerson("bbb",100,2);
+			obja.sayname();
+			objb.sayname();
+			// 是用工厂方法创建的对象，使用的构造函数都是object
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

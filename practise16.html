@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button" id="btn01">向右移动</button>
+		<button type="button" id="btn02">向左移动</button>
+		<button type="button" id="btn03">向上移动</button>
+		<button type="button" id="btn04">向下移动</button>
+		<button type="button" id="btn05">停止</button>
+		<button type="button" id="btn06">测试</button>
+		<br />
+		<div id="box1"></div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var box1 = document.getElementById("box1");
+	var btn01 = document.getElementById("btn01");
+	var btn02 = document.getElementById("btn02");
+	var btn03 = document.getElementById("btn03");
+	var btn04 = document.getElementById("btn04");
+	var btn05 = document.getElementById("btn05");
+	var btn06 = document.getElementById("btn06");
+	var temp = box1.offsetTop;
+	var speed = 5;
+	var timer;
+	btn01.onclick = function(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			box1.style.left = (box1.offsetLeft + speed) + "px"
+			
+			// 移动800px停止移动
+			if(box1.offsetLeft >= 800)
+				clearInterval(timer)
+		},10)
+	}
+	btn02.onclick = function(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			box1.style.left = (box1.offsetLeft - speed) + "px"
+			
+
+			if(box1.offsetLeft <= 0)
+				clearInterval(timer)
+		},10)
+	}
+	btn03.onclick = function(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			box1.style.top = (box1.offsetTop - speed) + "px"
+			if(box1.offsetTop <= temp)
+				clearInterval(timer)
+		},10)
+	}
+	btn04.onclick = function(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			box1.style.top = (box1.offsetTop + speed) + "px"
+			
+			// 移动800px停止移动
+			if(box1.offsetTop >= 800)
+				clearInterval(timer)
+		},10)
+	}
+	btn05.onclick = function(){
+		clearInterval(timer);
+	}
+	btn06.onclick = function(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			box1.style.width = (box1.clientWidth + speed) + "px"
+			
+			if(box1.clientWidth >= 800){
+				clearInterval(timer);
+			}
+		},10)
+	}
+</script>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#box1{
+		width: 6.25rem;
+		height: 6.25rem;
+		background-color: red;
+		position: absolute;
+	}
+	button{
+		width: 6.25rem;
+		margin: 0.3125rem;
+		padding: 0.3125rem;
+		color: #333333;
+		border-radius:0.3125rem ;
+		background-color: #f2f2f2;
+		border:0.0625rem solid #d4d4d4;
+	}
+</style>

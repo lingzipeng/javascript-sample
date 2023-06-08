@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="areaDiv"></div>
+		<br />
+		<div id="showMsg"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	// 当鼠标在areaDiv中移动时，在showMsg中显示坐标
+	var areaDiv =document.getElementById("areaDiv");
+	var showMsg =document.getElementById("showMsg");
+	// onmousemove事件在鼠标在元素中移动时触发
+	// 事件对象：当事件的响应函数被触发时浏览器每次会将一个事件对象作为实参传递进响应函数
+	// 在事件对象中封装了当前事件相关的一切信息，比如，鼠标坐标，键盘哪个键按下......详见https://www.runoob.com/jsref/dom-obj-event.html
+	areaDiv.onmousemove = function(event){
+		// clientX获取水平座标，clientY获取垂直坐标
+		// alert(event.clientX+" "+event.clientY) 
+		showMsg.innerHTML = "x = "+ event.clientX + ",y = "+ event.clientY
+	}
+</script>
+<style type="text/css">
+	#areaDiv{
+		width: 25rem;
+		height: 6.25rem;
+		border: 0.0625rem solid;
+	}
+	#showMsg{
+		width: 25rem;
+		height: 1.875rem;
+		border: 0.0625rem solid;
+	}
+</style>
